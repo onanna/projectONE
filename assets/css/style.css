@@ -26,3 +26,35 @@ img {
     width: 500px;
 }
 
+/* #nav-bar{
+    background: grey;
+    padding: 8px;
+    border: solid black 1px;
+    margin-bottom: 3px;
+}
+
+#name{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+    color: white;
+}
+
+#bodybox {
+    background: orange;
+    padding: 500;
+}
+
+.jtron {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+/* 
+.teams{
+    text-align: center;
+} */
+/* img {
+    margin-left: 10px;
+    height: 180px;
+    width: 180px;
+} */ 
