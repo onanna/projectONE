@@ -1,0 +1,28 @@
+body {
+    text-align: center;
+}
+
+.image {
+    padding: 50px;
+    word-spacing: 50px;
+    width:200px;
+    height: 200px;
+
+}
+
+.teamLogo {
+    padding: 20px;
+}
+
+img {
+    border: 50px;
+    width: 150px;
+    height: 150px;
+    padding: 40px;
+    
+}
+
+.teamContainter {
+    width: 500px;
+}
+
