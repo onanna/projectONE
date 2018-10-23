@@ -1,6 +1,9 @@
 // A $( document ).ready() block. Code waiting for document to load (doucment ready jquery)
 var subscriptionKey = "709f3fa6b4694c208fcb0c00e0215bc9"
 var Gkey = "AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA"
+var placeKey = "AIzaSyBFwGqbtcoa0X8yvd6XpX3P6A8tBC6iB7g"
+
+//variables to get current date
 
 var today = new Date();
 var dd = today.getDate();
@@ -13,7 +16,7 @@ var yyyy = today.getFullYear();
     if(mm<10) {
         mm = '0'+mm
     } 
-today = mm + '-' + dd + '-' + yyyy;
+    today = mm + '-' + dd + '-' + yyyy;
 
 
 
@@ -22,6 +25,7 @@ today = mm + '-' + dd + '-' + yyyy;
         // Request parameters
     };
     
+    //TODAYS GAME'S API PULL
     $.ajax({
         url: "https://api.fantasydata.net/v3/nba/scores/JSON/GamesByDate/" + today + $.param(params),
         beforeSend: function(xhrObj){
@@ -35,6 +39,7 @@ today = mm + '-' + dd + '-' + yyyy;
     .done(function(data) {
         console.log("TODAY'S GAMES & SCORES success");
         console.log(data);
+
 
   
 
@@ -130,8 +135,7 @@ today = mm + '-' + dd + '-' + yyyy;
     // });
 
 
-
-
+    //API PULL FOR ALL NBA TEAMS AND INFO
     $(function() {
 
     var params = {
@@ -154,19 +158,48 @@ today = mm + '-' + dd + '-' + yyyy;
         console.log("All TEAMS LIST success");
         console.log(data);
         
-
+        //DISPLAY OF ALL LOGOS 
         for(var i = 0; i < 30; i++){
             var name = "<div class='name'>" + (data[i].Name) + " </div>";
-            var image = name + '<img src=' + (data[i].WikipediaLogoUrl) + ">"
+            var image = name + '<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'">'
             image = '<div class="col-md-2">' + image + "</div>";
             $('#images').append(image);
+            console.log(data[i].Name);
         }
 
+
+        $(document).on('click','.logos',function(){
+            console.log($(this).data('team'))
+        })
+        //on click fucntion
+        
+        
+    
+
     })
+
+    
+
+    
+
     .fail(function() {
         console.log("error");
     });
+
     });
+
+ 
+
+   
+  
+
+
+
+
+
+
+
+
 
 
     $(function() {
@@ -192,6 +225,19 @@ today = mm + '-' + dd + '-' + yyyy;
         console.log("error");
     });
     });
+
+   //google maps
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
+ 
+
+  
+ 
 
 
 
