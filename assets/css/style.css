@@ -85,6 +85,11 @@ img {
   margin-left: 50px;
   margin-right: 50px;
 }
+
+#tickBox{
+    padding: 10px;
+    margin:5px;
+}
 /* 
 .teams{
     text-align: center;
@@ -93,6 +98,7 @@ img {
     margin-left: 10px;
     height: 180px;
     width: 180px;
+<<<<<<< HEAD
 <<<<<<< HEAD
     margin-top: 10px;
     margin-bottom: 10px;
