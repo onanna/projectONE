@@ -40,6 +40,20 @@ var yyyy = today.getFullYear();
         console.log("TODAY'S GAMES & SCORES success");
         console.log(data);
 
+        for(var i = 0; i < 14; i++){
+        var winner = "<div class='ticker'>" + (data[i].AwayTeam) + "=" + (data[i].AwayTeamScore) + "</div>";
+        var ticker = "<div class='ticker'>" + winner + (data[i].HomeTeam) + "=" + (data[i].HomeTeamScore) + "</div>";
+        // var scorer = ticker + '<div class="board" "  data-team="'+ data[i].Name +'">'
+        // scorer = '<div class="col-md-4">' + scorer + "</div>";
+        $('#todayScores').append(ticker);
+        console.log(ticker)
+        
+
+
+
+
+        }
+
 
   
 
@@ -164,14 +178,22 @@ var yyyy = today.getFullYear();
             var image = name + '<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'">'
             image = '<div class="col-md-2">' + image + "</div>";
             $('#images').append(image);
-            console.log(data[i].Name);
+            
         }
 
+<<<<<<< HEAD
             //on click function
         $(document).on('click','.logos',function(){
             console.log($(this).data('team'))
         })
         
+=======
+
+        //on click function
+        $(document).on('click','.logos',function(){
+            console.log($(this).data('team'))
+        })
+>>>>>>> b5a0aa8cc2667adfcb06ef61b0863612f9f9dc9f
         
         
     
