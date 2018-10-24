@@ -32,11 +32,12 @@ img {
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-            margin-top:20px;
-            margin-bottom: 20px;
+            
+          position: relative;
+          float: right;
+          overflow: hidden;
           height: 40%;
-          width: 40%;
-          margin-left: 100px;
+          width: 40%
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -75,6 +76,10 @@ img {
 
 
 
+        .map-location {
+            height: 100%;
+            width:100%;
 
+}
 
           
