@@ -76,10 +76,14 @@ img {
 
 
 
-<<<<<<< HEAD
 .jtron {
   margin-left: 50px;
   margin-right: 50px;
+}
+
+#tickBox{
+    padding: 10px;
+    margin:5px;
 }
 /* 
 .teams{
@@ -91,7 +95,3 @@ img {
     width: 180px;
 } */ 
 
-=======
-
-          
->>>>>>> 22c2873c523629270d19c63f7b82eb13030fdb14

@@ -41,8 +41,8 @@ var yyyy = today.getFullYear();
         console.log(data);
 
         for(var i = 0; i < 14; i++){
-        var winner = "<div class='ticker'>" + (data[i].AwayTeam) + "=" + (data[i].AwayTeamScore) + "</div>";
-        var ticker = "<div class='ticker'>" + winner + (data[i].HomeTeam) + "=" + (data[i].HomeTeamScore) + "</div>";
+        var winner = "<div class='winner'>" + (data[i].AwayTeam) + " = " + (data[i].AwayTeamScore) + "</div>";
+        var ticker = "<div class='col-md-1' id='tickBox'>" + winner + (data[i].HomeTeam) + " = " + (data[i].HomeTeamScore) + "</div>";
         // var scorer = ticker + '<div class="board" "  data-team="'+ data[i].Name +'">'
         // scorer = '<div class="col-md-4">' + scorer + "</div>";
         $('#todayScores').append(ticker);
