@@ -1,5 +1,6 @@
 body {
     text-align: center;
+  
 }
 
 .image {
@@ -84,6 +85,12 @@ img {
 #tickBox{
     padding: 10px;
     margin:5px;
+    background-color: #fff;
+}
+
+#todaysScores {
+    margin: 10px;
+    padding: 10px;
 }
 /* 
 .teams{
