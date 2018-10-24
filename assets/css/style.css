@@ -7,7 +7,7 @@ body {
     word-spacing: 50px;
     width:200px;
     height: 200px;
-
+    transform: rotateZ(90deg);
 }
 
 .teamLogo {
@@ -15,10 +15,10 @@ body {
 }
 
 img {
-    border: 50px;
-    width: 150px;
-    height: 150px;
-    padding: 40px;
+    /* border: 2px red dotted; */
+    width: 100px;
+    height: 100px;
+    padding: 20px;
     
 }
 
@@ -27,37 +27,56 @@ img {
 }
 
 
+/* CSS FOR THE PLACES MAPS */
 
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
-          height: 50%;
-          width: 50%;
+            margin-top:20px;
+            margin-bottom: 20px;
+          height: 40%;
+          width: 40%;
+          margin-left: 100px;
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
           height: 100%;
         }
+        .controls {
+            background-color: #fff;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            height: 29px;
+            margin-left: 17px;
+            margin-top: 10px;
+            outline: none;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+          }
+    
+          .controls:focus {
+            border-color: #4d90fe;
+          }
+          .title {
+            font-weight: bold;
+          }
+          #infowindow-content {
+            display: none;
+          }
+          #map #infowindow-content {
+            display: inline;
+          }
 
-/* #nav-bar{
-    background: grey;
-    padding: 8px;
-    border: solid black 1px;
-    margin-bottom: 3px;
-}
 
-#name{
-    text-align: center;
-    font-size: 30px;
-    font-weight: bolder;
-    color: white;
-}
 
-#bodybox {
-    background: orange;
-    padding: 500;
-}
 
+<<<<<<< HEAD
 .jtron {
   margin-left: 50px;
   margin-right: 50px;
@@ -72,3 +91,7 @@ img {
     width: 180px;
 } */ 
 
+=======
+
+          
+>>>>>>> 22c2873c523629270d19c63f7b82eb13030fdb14
