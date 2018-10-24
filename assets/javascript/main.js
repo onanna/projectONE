@@ -167,11 +167,11 @@ var yyyy = today.getFullYear();
             console.log(data[i].Name);
         }
 
-
+            //on click function
         $(document).on('click','.logos',function(){
             console.log($(this).data('team'))
         })
-        //on click fucntion
+        
         
         
     
