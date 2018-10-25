@@ -4,7 +4,7 @@ body {
 }
 
 .jumbotron{
-    background-image: url("./assets/images/NBAwallpaper.jpg");
+    background-image: URL("../images/jordan-tongue.jpg");
     color: white;
 }
 
@@ -44,6 +44,7 @@ img {
             margin-top:20px;
           height: 40%;
           width: 40%;
+          border: black solid 3px;
          
         }
         /* Optional: Makes the sample page fill the window. */
