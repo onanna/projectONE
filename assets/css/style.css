@@ -3,6 +3,11 @@ body {
   
 }
 
+.jumbotron{
+    background-image: url("./assets/images/NBAwallpaper.jpg");
+    color: white;
+}
+
 .image {
     padding: 50px;
     word-spacing: 50px;
@@ -33,11 +38,13 @@ img {
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
         #map {
+            position: relative;
+            float: right;
+            overflow: hidden;
             margin-top:20px;
-            margin-bottom: 20px;
           height: 40%;
           width: 40%;
-          margin-left: 100px;
+         
         }
         /* Optional: Makes the sample page fill the window. */
         html, body {
@@ -74,7 +81,10 @@ img {
             display: inline;
           }
 
-
+.mapLoc{
+   height: 100%;
+   width: 100%;
+}
 
 
 .jtron {
