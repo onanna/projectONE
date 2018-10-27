@@ -3,9 +3,6 @@ var subscriptionKey = "709f3fa6b4694c208fcb0c00e0215bc9"
 var Gkey = "AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA"
 var placeKey = "AIzaSyBFwGqbtcoa0X8yvd6XpX3P6A8tBC6iB7g"
 
-// var nbaLat = ""
-// var nbaLong = 
-
 
 
 
@@ -52,22 +49,8 @@ var yyyy = today.getFullYear();
         // var scorer = ticker + '<div class="board" "  data-team="'+ data[i].Name +'">'
         // scorer = '<div class="col-md-4">' + scorer + "</div>";
         $('#todayScores').append(ticker);
-       
-        
-
-
-
-
+    
         }
-
-
-  
-
-
-
-
-
-
     })
     .fail(function() {
         console.log("error");
@@ -215,10 +198,6 @@ var yyyy = today.getFullYear();
           
           initMap()
 
-
-
-
-
         }
     })
 
@@ -262,20 +241,14 @@ var yyyy = today.getFullYear();
 
 
         //on click function
+ 
         $(document).on('click','.logos',function(){
-            console.log($(this).data('team'))
-
-           
-
-
-
+            console.log($(this).data('team'));
+            $("#teamName").html($(this).data("team"));
 
         })
-        
-        
-    
-
     })
+
 
     
 
@@ -288,19 +261,6 @@ var yyyy = today.getFullYear();
     });
 
  
-
-   
-  
-
-
-
-
-
-
-
-
-
-
     $(function() {
     var params = {
         // Request parameters
@@ -324,82 +284,6 @@ var yyyy = today.getFullYear();
         console.log("error");
     });
     });
-
-//    //google maps
-//     var map;
-//     function initMap() {
-//       map = new google.maps.Map(document.getElementById('map'), {
-//         center: {lat: 2.29, lng: 6.781},
-//         zoom: 8
-//       });
-//     }
-
-
-//***PLACES AN MAPSSS */
-/* // This sample uses the Place Autocomplete widget to allow the user to search
-// for and select a place. The sample then displays an info window containing
-// the place ID and other information about the place that the user has
-// selected.
-
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:  */
-
-// function initMap() {
-//   var map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: nbaLat, lng: nbaLong},
-//     zoom: 13
-
-
-
-//   });
-
-//   var input = document.getElementById('pac-input');
-
-//   var autocomplete = new google.maps.places.Autocomplete(input);
-//   autocomplete.bindTo('bounds', map);
-
-//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-//   var infowindow = new google.maps.InfoWindow();
-//   var infowindowContent = document.getElementById('infowindow-content');
-//   infowindow.setContent(infowindowContent);
-//   var marker = new google.maps.Marker({
-//     map: map
-//   });
-//   marker.addListener('click', function() {
-//     infowindow.open(map, marker);
-//   });
-
-//   autocomplete.addListener('place_changed', function() {
-//     infowindow.close();
-//     var place = autocomplete.getPlace();
-//     if (!place.geometry) {
-//       return;
-//     }
-
-//     if (place.geometry.viewport) {
-//       map.fitBounds(place.geometry.viewport);
-//     } else {
-//       map.setCenter(place.geometry.location);
-//       map.setZoom(17);
-//     }
-
-//     // Set the position of the marker using the place ID and location.
-//     marker.setPlace({
-//       placeId: place.place_id,
-//       location: place.geometry.location
-//     });
-//     marker.setVisible(true);
-
-//     infowindowContent.children['place-name'].textContent = place.name;
-//     infowindowContent.children['place-id'].textContent = place.place_id;
-//     infowindowContent.children['place-address'].textContent =
-//         place.formatted_address;
-//     infowindow.open(map, marker);
-//   });
-// }
-
-// initMap()
 
  
 
