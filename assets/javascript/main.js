@@ -5,8 +5,11 @@ var placeKey = "AIzaSyBFwGqbtcoa0X8yvd6XpX3P6A8tBC6iB7g"
 
 // var nbaLat = ""
 // var nbaLong = 
+let stadiumLat;
+let stadiumLng;
 
 
+let 
 //variables to get current date
 
 var today = new Date();
@@ -128,14 +131,23 @@ $(function () {
 
                 console.log(data[i].State)
                 var nbaLat = (data[6].GeoLat)
+                this.stadiumLat = data[i].GeoLat;
                 var nbaLong = (data[6].GeoLong)
+                this.staddiumLng = data[i].GeoLong;
+                var myLatLng = {lat: nbaLat, lng: nbaLong}
+                
                 function initMap() {
                     var map = new google.maps.Map(document.getElementById('map'), {
                         center: { lat: nbaLat, lng: nbaLong },
                         zoom: 13
-
                     });
 
+                    var marker = new google.maps.Marker({
+                        position: myLatLng,
+                        map: map,
+                        title: data[6].Name
+                        
+                    });
                     var input = document.getElementById('pac-input');
 
                     var autocomplete = new google.maps.places.Autocomplete(input);
@@ -212,7 +224,7 @@ $(function () {
 
             //DISPLAY OF ALL LOGOS 
             for (var i = 0; i < 30; i++) {
-                var name = "<div class='name'>" + (data[i].Name) + " </div>";
+                var name = "<button class='name'>" + (data[i].Name) + " </button>";
                 var image = name + '<img class="logos" id="' + data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="' + data[i].Name + '">'
                 image = '<div class="col-md-2">' + image + "</div>";
                 $('#images').append(image);
