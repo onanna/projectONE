@@ -1,0 +1,115 @@
+body {
+    text-align: center;
+  
+}
+
+.jumbotron{
+    background-image: URL("../images/jordan-tongue.jpg");
+    color: white;
+}
+
+.image {
+    padding: 50px;
+    word-spacing: 50px;
+    width:200px;
+    height: 200px;
+    transform: rotateZ(90deg);
+}
+
+.teamLogo {
+    padding: 20px;
+}
+
+img {
+    /* border: 2px red dotted; */
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+    
+}
+
+.teamContainter {
+    width: 500px;
+}
+
+
+/* CSS FOR THE PLACES MAPS */
+
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            position: relative;
+            float: right;
+            overflow: hidden;
+            margin-top:20px;
+          height: 40%;
+          width: 40%;
+          border: black solid 3px;
+         
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+        }
+        .controls {
+            background-color: #fff;
+            border-radius: 2px;
+            border: 1px solid transparent;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            height: 29px;
+            margin-left: 17px;
+            margin-top: 10px;
+            outline: none;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 400px;
+          }
+    
+          .controls:focus {
+            border-color: #4d90fe;
+          }
+          .title {
+            font-weight: bold;
+          }
+          #infowindow-content {
+            display: none;
+          }
+          #map #infowindow-content {
+            display: inline;
+          }
+
+.mapLoc{
+   height: 100%;
+   width: 100%;
+}
+
+
+.jtron {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+#tickBox{
+    padding: 10px;
+    margin:5px;
+    background-color: #fff;
+}
+
+#todaysScores {
+    margin: 10px;
+    padding: 10px;
+}
+/* 
+.teams{
+    text-align: center;
+} */
+/* img {
+    margin-left: 10px;
+    height: 180px;
+    width: 180px;
+} */ 
+
