@@ -1,9 +1,12 @@
 // A $( document ).ready() block. Code waiting for document to load (doucment ready jquery)
 var subscriptionKey = "709f3fa6b4694c208fcb0c00e0215bc9"
+var subscriptionKeyTwo = "a7361f543ba94a8b8d48c66395222fda"
+var subscriptionKeyOfe= "4d6082d40356466e8b134bd9c084bb28"
 var Gkey = "AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA"
 var placeKey = "AIzaSyBFwGqbtcoa0X8yvd6XpX3P6A8tBC6iB7g"
 
-//Variables to get current date/////////////////////////////////////////////////////////
+//CURRENT DATE VARIABLES AND FORMULA/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -16,8 +19,7 @@ if(mm<10) {
     mm = '0'+mm
 } 
 today = mm + '-' + dd + '-' + yyyy;
-/////////////////////////////////////////////////////////////////////////////////////////
-
+//////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -32,7 +34,7 @@ $.ajax({
     url: "https://api.fantasydata.net/v3/nba/scores/JSON/GamesByDate/" + today + $.param(params),
     beforeSend: function(xhrObj){
         // Request headers
-        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
     },
     type: "GET",
     // Request body
@@ -41,10 +43,11 @@ $.ajax({
 .done(function(data) {
     console.log("TODAY'S GAMES & SCORES success");
     console.log(data);
+    console.log(data[0].PointSpread)
 
-    for(var i = 0; i < 14; i++){
-    var winner = "<div class='winner'>" + (data[i].AwayTeam) + " = " + (data[i].AwayTeamScore) + "</div>";
-    var ticker = "<div class='col-md-1' id='tickBox'>" + winner + (data[i].HomeTeam) + " = " + (data[i].HomeTeamScore) + "</div>";
+    for(var i = 0; i < 30; i++) {
+    var winner = "<div class='winner'>" + (data[i].AwayTeam) + " = " + ((data[i].AwayTeamScore)) + "</div>";
+    var ticker = "<div class='col-md-1' id='tickBox'>" + winner + (data[i].HomeTeam) + " = " + ((data[i].HomeTeamScore)) + "</div>";
     // var scorer = ticker + '<div class="board" "  data-team="'+ data[i].Name +'">'
     // scorer = '<div class="col-md-4">' + scorer + "</div>";
     $('#todayScores').append(ticker);
@@ -73,7 +76,7 @@ $.ajax({
     url: "https://api.fantasydata.net/v3/nba/scores/JSON/Standings/2019?" + $.param(params),
     beforeSend: function(xhrObj){
         // Request headers
-        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
     },
     type: "GET",
     // Request body
@@ -83,102 +86,6 @@ $.ajax({
     console.log("STANDINGS success");
     console.log(data);
     
-})
-
-.fail(function() {
-    console.log("error");
-});
-});
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/////************************************************/////////////////////////////////////////
-
-
-//STADIUM AJX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-$(function() {
-var params = {
-    // Request parameters
-};
-
-$.ajax({
-    url: "https://api.fantasydata.net/v3/nba/scores/JSON/Stadiums?" + $.param(params),
-    beforeSend: function(xhrObj){
-        // Request headers
-        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key",subscriptionKey);
-    },
-    type: "GET",
-    // Request body
-    data: "{body}",
-})
-
-.done(function(data) {
-    console.log("TEAM STADIUM success");
-    console.log(data);
-
-    //////////////////////////////////////////////////////////////////////////////////////////////
-    for(var i = 0; i < 30; i++) {
-    
-    console.log(data[i].State)
-    var nbaLat = (data[7].GeoLat)
-    var nbaLong = (data[7].GeoLong)
-
-    //GOOGLE MAPS API////////////////////////////////////////////////////////////////////////////
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: nbaLat, lng: nbaLong},
-            zoom: 13
-    });
-    
-    var input = document.getElementById('pac-input');
-    
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
-    
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-    
-    var infowindow = new google.maps.InfoWindow();
-    var infowindowContent = document.getElementById('infowindow-content');
-    infowindow.setContent(infowindowContent);
-    var marker = new google.maps.Marker({
-        map: map
-    });
-    marker.addListener('click', function() {
-        infowindow.open(map, marker);
-    });
-    
-    autocomplete.addListener('place_changed', function() {
-        infowindow.close();
-        var place = autocomplete.getPlace();
-        if (!place.geometry) {
-        return;
-        }
-    
-        if (place.geometry.viewport) {
-        map.fitBounds(place.geometry.viewport);
-        } else {
-        map.setCenter(place.geometry.location);
-        map.setZoom(17);
-        }
-    
-        // Set the position of the marker using the place ID and location/////////////////////////////
-        marker.setPlace({
-        placeId: place.place_id,
-        location: place.geometry.location
-        });
-        marker.setVisible(true);
-    
-        infowindowContent.children['place-name'].textContent = place.name;
-        infowindowContent.children['place-id'].textContent = place.place_id;
-        infowindowContent.children['place-address'].textContent =
-            place.formatted_address;
-        infowindow.open(map, marker);
-    });
-    }
-    initMap()
-    }
 })
 
 .fail(function() {
@@ -204,7 +111,7 @@ $.ajax({
     url: "https://api.fantasydata.net/v3/nba/scores/JSON/AllTeams?" + $.param(params),
     beforeSend: function(xhrObj){
         // Request headers
-        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
     },
 
     type: "GET",
@@ -216,11 +123,11 @@ $.ajax({
     console.log("All TEAMS LIST success");
     console.log(data);
     
-    //DISPLAY OF ALL LOGOS 
+    //DISPLAY OF ALL LOGOS////////////////////////////////////////////////////////////////////
     for(var i = 0; i < 30; i++){
 
         var name = "<div class='name'>" + (data[i].Name) + " </div>";
-        var image = name + '<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'">'
+        var image = name + '<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'">'
         image = '<div class="col-md-2">' + image + "</div>";
         $('#images').append(image);    
 
@@ -228,16 +135,117 @@ $.ajax({
     }
 
     
-    //ON CLICK FUNCTION////////////////////////////////////////////////////////////////////////////
-    $(document).on('click','.logos',function(){
-        console.log($(this).data('team'))
-        console.log($(this).data('conf'))
-       
+    //ON CLICK FUNCTION////////////////////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    $(document).on('click', '.logos' ,function(){
         
+        // console.log($(this).data('team'))
+        // console.log($(this).data('conf'))
+       
         $('#teamName').html($(this).data('team'))
         $('#teamConf').html($(this).data('conf'))
-        // $('#teamStandings').append($(this).data(''))
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+        
+        var teamCity = $(this).data('city');
+        console.log(teamCity);
+
+        //STADIUM AJX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        $(function() {
+            var params = {
+                // Request parameters
+            };
+            
+            $.ajax({
+                url: "https://api.fantasydata.net/v3/nba/scores/JSON/Stadiums?" + $.param(params),
+                beforeSend: function(xhrObj){
+                    // Request headers
+                    xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key",subscriptionKeyOfe);
+                },
+                type: "GET",
+                // Request body
+                data: "{body}",
+            })
+            
+            .done(function(data) {
+                // console.log("TEAM STADIUM success");
+                console.log(data);
+                console.log(teamCity);
+
+                for(let i = 0; i < 29; i++) {
+                    if(teamCity === data[i].City) {
+                        var nbaLat = data[i].GeoLat;
+                        var nbaLong = data[i].GeoLong;
+                    }
+                }
+
+                if(teamCity == 'Utah') {
+                    var nbaLat = 40.768333;
+                    var nbaLong = -111.901111;
+                }
+                //  else if ("team city = data attribute") {
+                //     // nba lat & nbalong
+                // } else if()
+
+                console.log("Lat: " + nbaLat, "Long: " + nbaLong);
+          
+                //GOOGLE MAPS API////////////////////////////////////////////////////////////////////////////
+                function initMap() {
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        center: {lat: nbaLat, lng: nbaLong},
+                        zoom: 10
+                });
+                
+                var input = document.getElementById('pac-input');
+                
+                var autocomplete = new google.maps.places.Autocomplete(input);
+                autocomplete.bindTo('bounds', map);
+                
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+                
+                var infowindow = new google.maps.InfoWindow();
+                var infowindowContent = document.getElementById('infowindow-content');
+                infowindow.setContent(infowindowContent);
+                var marker = new google.maps.Marker({
+                    map: map
+                });
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+                
+                    autocomplete.addListener('place_changed', function() {
+                        infowindow.close();
+                        var place = autocomplete.getPlace();
+                        if (!place.geometry) {
+                        return;
+                        }
+                    
+                        if (place.geometry.viewport) {
+                        map.fitBounds(place.geometry.viewport);
+                        } else {
+                        map.setCenter(place.geometry.location);
+                        map.setZoom(17);
+                        }
+                    
+                        // Set the position of the marker using the place ID and location////////////////////////
+                        marker.setPlace({
+                        placeId: place.place_id,
+                        location: place.geometry.location
+                        });
+                        marker.setVisible(true);
+                    
+                        infowindowContent.children['place-name'].textContent = place.name;
+                        infowindowContent.children['place-id'].textContent = place.place_id;
+                        infowindowContent.children['place-address'].textContent =
+                            place.formatted_address;
+                        infowindow.open(map, marker);
+                    });
+                }
+                initMap()
+            })
+            
+            .fail(function() {
+                console.log("error");
+            });
+        });
     })
 })
 .fail(function() {
@@ -262,7 +270,7 @@ $.ajax({
     url: "https://api.fantasydata.net/v3/nba/scores/JSON/AreAnyGamesInProgress?" + $.param(params),
     beforeSend: function(xhrObj){
         // Request headers
-        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
     },
     type: "GET",
     // Request body
@@ -281,10 +289,3 @@ $.ajax({
 
 
 /////************************************************///////////////////////////////////////////
-
-
-
-
-
-
-
