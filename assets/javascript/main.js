@@ -1,5 +1,5 @@
 // A $( document ).ready() block. Code waiting for document to load (doucment ready jquery)
-var subscriptionKey = "709f3fa6b4694c208fcb0c00e0215bc9"
+var subscriptionKey = "4d6082d40356466e8b134bd9c084bb28"
 var Gkey = "AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA"
 var placeKey = "AIzaSyBFwGqbtcoa0X8yvd6XpX3P6A8tBC6iB7g"
 
@@ -122,66 +122,108 @@ $.ajax({
     for(var i = 0; i < 30; i++) {
     
     console.log(data[i].State)
-    var nbaLat = (data[7].GeoLat)
-    var nbaLong = (data[7].GeoLong)
+    var nbaLat = (data[6].GeoLat)
+    var nbaLong = (data[6].GeoLong)
 
     //GOOGLE MAPS API////////////////////////////////////////////////////////////////////////////
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: nbaLat, lng: nbaLong},
-            zoom: 13
-    });
-    
-    var input = document.getElementById('pac-input');
-    
-    var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
-    
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-    
-    var infowindow = new google.maps.InfoWindow();
-    var infowindowContent = document.getElementById('infowindow-content');
-    infowindow.setContent(infowindowContent);
-    var marker = new google.maps.Marker({
-        map: map
-    });
-    marker.addListener('click', function() {
-        infowindow.open(map, marker);
-    });
-    
-    autocomplete.addListener('place_changed', function() {
-        infowindow.close();
-        var place = autocomplete.getPlace();
-        if (!place.geometry) {
-        return;
+      var map;
+      var infowindow; 
+    function initialize(){
+            var center = new google.maps.LatLng(nbaLat, nbaLong);
+            map= new google.maps.Map(document.getElementById('map'), {
+                center: center,
+                zoom: 15
+            });
+            var request = {
+                location: center,
+                radius: 8000,
+                types: ['bar', 'restaurant']
+            };
+            infowindow = new google.maps.InfoWindow()
+            var service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(request, callback);
+        };
+        function callback(results, status) {
+            if(status == google.maps.places.PlacesServiceStatus.OK){
+                for (var i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                }
+            }
         }
-    
-        if (place.geometry.viewport) {
-        map.fitBounds(place.geometry.viewport);
-        } else {
-        map.setCenter(place.geometry.location);
-        map.setZoom(17);
-        }
-    
-        // Set the position of the marker using the place ID and location/////////////////////////////
-        marker.setPlace({
-        placeId: place.place_id,
-        location: place.geometry.location
-        });
-        marker.setVisible(true);
-    
-        infowindowContent.children['place-name'].textContent = place.name;
-        infowindowContent.children['place-id'].textContent = place.place_id;
-        infowindowContent.children['place-address'].textContent =
-            place.formatted_address;
-        infowindow.open(map, marker);
-    });
-    }
-    initMap()
-    }
-})
 
-.fail(function() {
+    
+
+
+        function createMarker (place) {
+            var placeLoc = place.geometry.location;
+            var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            })
+            google.maps.event.addListener(marker, 'click', function(){
+                console.log(placeLoc);
+                infowindow.setContent(place.name);
+                infowindow.open(map, this);
+            })
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+//     function initMap() {
+//         var map = new google.maps.Map(document.getElementById('map'), {
+//             center: {lat: nbaLat, lng: nbaLong},
+//             zoom: 13
+//     });
+    
+//     var input = document.getElementById('pac-input');
+    
+//     var autocomplete = new google.maps.places.Autocomplete(input);
+//     autocomplete.bindTo('bounds', map);
+    
+//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    
+//     var infowindow = new google.maps.InfoWindow();
+//     var infowindowContent = document.getElementById('infowindow-content');
+//     infowindow.setContent(infowindowContent);
+//     var marker = new google.maps.Marker({
+//         map: map
+//     });
+//     marker.addListener('click', function() {
+//         infowindow.open(map, marker);
+//     });
+    
+//     autocomplete.addListener('place_changed', function() {
+//         infowindow.close();
+//         var place = autocomplete.getPlace();
+//         if (!place.geometry) {
+//         return;
+//         }
+    
+//         if (place.geometry.viewport) {
+//         map.fitBounds(place.geometry.viewport);
+//         } else {
+//         map.setCenter(place.geometry.location);
+//         map.setZoom(17);
+//         }
+    
+//         // Set the position of the marker using the place ID and location/////////////////////////////
+//         marker.setPlace({
+//         placeId: place.place_id,
+//         location: place.geometry.location
+//         });
+//         marker.setVisible(true);
+    
+//         infowindowContent.children['place-name'].textContent = place.name;
+//         infowindowContent.children['place-id'].textContent = place.place_id;
+//         infowindowContent.children['place-address'].textContent =
+//             place.formatted_address;
+//         infowindow.open(map, marker);
+//     });
+//      }
+   
+initialize()
+    }
+});
+
+fail(function() {
     console.log("error");
 });
 });
