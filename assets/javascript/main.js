@@ -137,6 +137,11 @@ $(function() {
         
         }
 
+ 
+    $(function() {
+    var params = {
+        // Request parameters
+    };
     
         //ON CLICK FUNCTION////////////////////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         $(document).on('click', '.logos' ,function(){
