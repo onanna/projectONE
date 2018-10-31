@@ -144,8 +144,8 @@ $(function() {
             // console.log($(this).data('team'))
             // console.log($(this).data('conf'))
         
-            $('#teamName').html($(this).data('team')) ///won
-            $('#teamConf').html($(this).data('conf'))
+            $('#teamName').html("Team: "+ $(this).data('team')) ///won
+            $('#teamConf').html("Conference: "+ $(this).data('conf'))
             $('#showInfo').html;
 
             $("#map").css({ //adds the map onto the page from the on click
