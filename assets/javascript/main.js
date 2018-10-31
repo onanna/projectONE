@@ -5,7 +5,9 @@ var subscriptionKeyOfe= "4d6082d40356466e8b134bd9c084bb28"
 var Gkey = "AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA"
 var placeKey = "AIzaSyBFwGqbtcoa0X8yvd6XpX3P6A8tBC6iB7g"
 
+
 $("#pac-input").remove();
+
 
 //CURRENT DATE VARIABLES AND FORMULA/////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -149,6 +151,7 @@ $(function() {
             // console.log($(this).data('team'))
             // console.log($(this).data('conf'))
         
+
             $('#teamName').html("Team: "+ $(this).data('team')) ///won
             $('#teamConf').html("Conference: "+ $(this).data('conf'))
             $('#showInfo').html;
@@ -162,8 +165,6 @@ $(function() {
                   "width": "40%",
                   "border": "black solid 3px"
             })
-        
-            
             
             var teamCity = $(this).data('city');
             console.log(teamCity);
@@ -199,6 +200,7 @@ $(function() {
                             var nbaLat = data[i].GeoLat;
                             var nbaLong = data[i].GeoLong;
                         }
+                      
                     } //forloop end
 
                     if(teamCity == 'Utah') { //Utah Jazz lat & long
@@ -225,15 +227,11 @@ $(function() {
             
                     //GOOGLE MAPS API/////////////////////////////////////////////////////////
                     //////////////////////////////////////////////////////////////////////////
-           
+
                     var map;
                     var infowindow;
 
                     function initialize() {
-                    
-                        if (nbaLat && nbaLong === null){
-                                remove();
-                        } else {
 
                         var center = new google.maps.LatLng(nbaLat, nbaLong);
                         map = new google.maps.Map(document.getElementById('map'), {
@@ -250,6 +248,7 @@ $(function() {
                         infowindow = new google.maps.InfoWindow()
                         var service = new google.maps.places.PlacesService(map);
                         service.nearbySearch(request, callback);
+
                         }
                     };
 
@@ -309,6 +308,7 @@ $(function() {
 
 //scoreboard for current games api call check//////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
+
     $(function() {
         var params = {
         // Request parameters
