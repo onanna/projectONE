@@ -128,11 +128,9 @@ $(function() {
         for(var i = 0; i < 30; i++){
 
             var name = "<div class='name'>" + (data[i].Name) + " </div>";
-            var image = name + '<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'">'
+            var image ='<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'">' + name
             image = '<div class="col-md-2">' + image + "</div>";
             $('#images').append(image);    
-
-        
         }
 
     
@@ -141,9 +139,19 @@ $(function() {
         
             // console.log($(this).data('team'))
             // console.log($(this).data('conf'))
-        
-            $('#teamName').html($(this).data('team'))
-            $('#teamConf').html($(this).data('conf'))
+            
+            $('#teamName').html("Team:" + " " + $(this).data('team'))
+            $('#teamConf').html("Conference:" + " " + $(this).data('conf'))
+
+            $("#map").css({ //adds the map onto the page from the on click
+                "position": "relative;",
+                "float": "right",
+                "overflow": "hidden",
+                "margin-top":"20px",
+                "height": "40%",
+                "width": "40%",
+                "border": "black solid 3px"
+            })
             
             var teamCity = $(this).data('city');
             console.log(teamCity);
@@ -181,13 +189,22 @@ $(function() {
                         }
                     }
 
-                    if(teamCity == 'Utah') {
+                    if(teamCity == 'Utah') { //Utah Jazz lat & long
                         var nbaLat = 40.768333;
                         var nbaLong = -111.901111;
+                    } if (teamCity == 'Indiana'){ //Indiana Pacers lat & long
+                        var nbaLat = 39.7640;
+                        var nbaLong = -86.1555;
+                    } if (teamCity == 'Detroit'){ //Detroit Pistons lat & long
+                        var nbaLat = 42.341048;
+                        var nbaLong = -83.055163;
+                    } if (teamCity == 'Minnesota'){ //Minnesota Twolves lat & long
+                        var nbaLat = 44.974329436;
+                        var nbaLong = -93.272332244;
+                    }if (teamCity == 'Golden State'){ //G State Warriors lat & long
+                        var nbaLat = 37.750163666;
+                        var nbaLong = -122.201832526;
                     }
-                    //  else if ("team city = data attribute") {
-                    //     // nba lat & nbalong
-                    // } else if()
 
                     console.log("Lat: " + nbaLat, "Long: " + nbaLong);
             
@@ -201,7 +218,7 @@ $(function() {
                         var center = new google.maps.LatLng(nbaLat, nbaLong);
                         map = new google.maps.Map(document.getElementById('map'), {
                             center: center,
-                            zoom: 15
+                            zoom: 13
                         });
 
                         var request = {
