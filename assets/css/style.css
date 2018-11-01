@@ -50,6 +50,7 @@ img {
         /* Optional: Makes the sample page fill the window. */
         html, body {
           height: 100%;
+          
         }
         .controls {
             background-color: #fff;
@@ -85,6 +86,7 @@ img {
 .mapLoc{
    height: 100%;
    width: 100%;
+ 
 }
 
 

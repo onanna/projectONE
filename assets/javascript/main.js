@@ -69,40 +69,41 @@ $.ajax({
 
 //AJAX CALL FOR STANDINGS AND DIVISON/RECORD INFORMATION//////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
-$(function() {
-var params = {
-    // Request parameters
-};
 
-$.ajax({
-    url: "https://api.fantasydata.net/v3/nba/scores/JSON/Standings/2019?" + $.param(params),
-    beforeSend: function(xhrObj){
-        // Request headers
-        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
-    },
-    type: "GET",
-    // Request body
-    data: "{body}",
-})
-.done(function(data) {
-    console.log("STANDINGS success");
-    console.log(data);
+// $(function() {
+// var params = {
+//     // Request parameters
+// };
+
+// $.ajax({
+//     url: "https://api.fantasydata.net/v3/nba/scores/JSON/Standings/2019?" + $.param(params),
+//     beforeSend: function(xhrObj){
+//         // Request headers
+//         xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
+//     },
+//     type: "GET",
+//     // Request body
+//     data: "{body}",
+// })
+// .done(function(data) {
+//     console.log("STANDINGS success");
+//     console.log(data);
     
-})
+// })
 
-.fail(function() {
-    console.log("error");
-});
-});
+// .fail(function() {
+//     console.log("error");
+// });
+// });
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-
-/////************************************************/////////////////////////////////////////
 
 
 //API PULL FOR ALL NBA TEAMS AND INFO
 //////////////////////////////////////////////////////////////////////////////////////////////
+
 $(function() {
 
     var params = {
@@ -130,42 +131,101 @@ $(function() {
         for(var i = 0; i < 30; i++){
 
             var name = "<div class='name'>" + (data[i].Name) + " </div>";
-            var image ='<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'">' + name
+            var image ='<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City + '" data-key="' + data[i].Key + '">' + name
             image = '<div class="col-md-2">' + image + "</div>";
             $('#images').append(image);    
         }
+
 
     
         //ON CLICK FUNCTION////////////////////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         $(document).on('click', '.logos' ,function(){
         
             // console.log($(this).data('team'))
-            // console.log($(this).data('conf'))
+            
             
             $('#teamName').html("Team:" + " " + $(this).data('team'))
             $('#teamConf').html("Conference:" + " " + $(this).data('conf'))
+            $('#teamStandings').html("Stand:" + " " + $(this).data('Key'))
+            // console.log("key!!!!:" + $(this).data('Key'))
 
             $("#map").css({ //adds the map onto the page from the on click
-                "position": "relative;",
+                // "position": "relative;",
                 "float": "right",
                 "overflow": "hidden",
                 "margin-top":"20px",
                 "height": "40%",
                 "width": "40%",
-                "border": "black solid 3px"
+                "border": "black solid 3px",
+                "margin-right": "90px"
+
+        
             })
             
             var teamCity = $(this).data('city');
+            
             console.log(teamCity);
 
-            //STADIUM AJX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////////////////
-            $(function() {
+            var teamKey = $(this).data('Key');
 
+
+
+            /////************************************************/////////////////////////////////////////
+                //*******************/ STANDINGS AJAX CALLLL************************//
+
+                    $(function() {
+                        var params = {
+                            // Request parameters
+                        };
+                        
+                        $.ajax({
+                            url: "https://api.fantasydata.net/v3/nba/scores/JSON/Standings/2019?" + $.param(params),
+                            beforeSend: function(xhrObj){
+                                // Request headers
+                                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
+                            },
+                            type: "GET",
+                            // Request body
+                            data: "{body}",
+                        })
+                        .done(function(data) {
+                            for(var i = 0; i < 30; i++){
+
+                                if(teamKey === data[i].Key){
+                                    var teamWins= data[i].Wins;
+                                    var teamLosses= data[i].Losses;
+                                }
+                            }
+
+                            console.log("TEAM WINSSS " + teamWins)
+                            console.log("TEAM LOSS " + teamLosses)
+
+                            console.log("STANDINGS success");
+                            console.log(data);
+
+                            for(var i = 0; i < 30; i++){
+                                var stand= '<div class="stand" data-key='+ data[i].Key + '>' + (data[i].Key) + '</div>'
+                                console.log("this is the stand bih" + stand)
+                            }
+                            
+                        })
+                        
+                        .fail(function() {
+                            console.log("error");
+                        });
+                        });
+
+
+           
+                //STADIUM AJAX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            $(function() {
+                
                 var params = {
                     // Request parameters
                 };
-                
+           
                 $.ajax({
                     url: "https://api.fantasydata.net/v3/nba/scores/JSON/Stadiums?" + $.param(params),
                     beforeSend: function(xhrObj){
