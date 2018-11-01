@@ -5,9 +5,7 @@ var subscriptionKeyOfe= "4d6082d40356466e8b134bd9c084bb28"
 var Gkey = "AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA"
 var placeKey = "AIzaSyBFwGqbtcoa0X8yvd6XpX3P6A8tBC6iB7g"
 
-
 $("#pac-input").remove();
-
 
 //CURRENT DATE VARIABLES AND FORMULA/////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,7 +31,7 @@ $(function() {
 var params = {
 // Request parameters
 };
-//TODAYS GAME'S API PULL
+//TODAYS GAME'S API PULL/////////
 $.ajax({
     url: "https://api.fantasydata.net/v3/nba/scores/JSON/GamesByDate/" + today + $.param(params),
     beforeSend: function(xhrObj){
@@ -137,35 +135,28 @@ $(function() {
             $('#images').append(image);    
         }
 
- 
-    $(function() {
-    var params = {
-        // Request parameters
-    };
     
         //ON CLICK FUNCTION////////////////////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         $(document).on('click', '.logos' ,function(){
         
             // console.log($(this).data('team'))
             // console.log($(this).data('conf'))
-        
-
-            $('#teamName').html("Team: "+ $(this).data('team')) ///won
-            $('#teamConf').html("Conference: "+ $(this).data('conf'))
-            $('#showInfo').html;
+            
+            $('#teamName').html("Team:" + " " + $(this).data('team'))
+            $('#teamConf').html("Conference:" + " " + $(this).data('conf'))
 
             $("#map").css({ //adds the map onto the page from the on click
-                    "position": "relative;",
-                    "float": "right",
-                    "overflow": "hidden",
-                    "margin-top":"20px",
-                  "height": "40%",
-                  "width": "40%",
-                  "border": "black solid 3px"
+                "position": "relative;",
+                "float": "right",
+                "overflow": "hidden",
+                "margin-top":"20px",
+                "height": "40%",
+                "width": "40%",
+                "border": "black solid 3px"
             })
             
             var teamCity = $(this).data('city');
-            console.log(teamCity);
+            console.log(teamCity);git
 
             //STADIUM AJX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////
@@ -198,8 +189,7 @@ $(function() {
                             var nbaLat = data[i].GeoLat;
                             var nbaLong = data[i].GeoLong;
                         }
-                      
-                    } //forloop end
+                    }
 
                     if(teamCity == 'Utah') { //Utah Jazz lat & long
                         var nbaLat = 40.768333;
@@ -222,7 +212,6 @@ $(function() {
             
                     //GOOGLE MAPS API/////////////////////////////////////////////////////////
                     //////////////////////////////////////////////////////////////////////////
-
                     var map;
                     var infowindow;
 
@@ -243,12 +232,7 @@ $(function() {
                         infowindow = new google.maps.InfoWindow()
                         var service = new google.maps.places.PlacesService(map);
                         service.nearbySearch(request, callback);
-
-                        }
                     };
-
-                
-
 
                     function callback(results, status) {
 
@@ -303,28 +287,28 @@ $(function() {
 
 //scoreboard for current games api call check//////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
+$(function() {
+    var params = {
+    // Request parameters
+    };
 
-    $(function() {
-        var params = {
-        // Request parameters
-        };
-
-        $.ajax({
-            url: "https://api.fantasydata.net/v3/nba/scores/JSON/AreAnyGamesInProgress?" + $.param(params),
-            beforeSend: function(xhrObj){
-            // Request headers
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
-            },
-            type: "GET",
-            // Request body
-            data: "{body}",
-        })
-        .done(function(data) {
-            console.log("CURRENT GAMES success");
-            console.log(data);
-        })
-        .fail(function() {
-            console.log("error");
-        });
+    $.ajax({
+        url: "https://api.fantasydata.net/v3/nba/scores/JSON/AreAnyGamesInProgress?" + $.param(params),
+        beforeSend: function(xhrObj){
+        // Request headers
+            xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
+        },
+        type: "GET",
+        // Request body
+        data: "{body}",
+    })
+    .done(function(data) {
+        console.log("CURRENT GAMES success");
+        console.log(data);
+    })
+    .fail(function() {
+        console.log("error");
     });
 });
+///////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
