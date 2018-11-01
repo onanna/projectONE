@@ -103,13 +103,11 @@ img {
     margin: 10px;
     padding: 10px;
 }
-/* 
-.teams{
-    text-align: center;
-} */
-/* img {
-    margin-left: 10px;
-    height: 180px;
-    width: 180px;
-} */ 
 
+.mapLoc {
+    margin-top: 100px;
+}
+
+.name {
+    text-align: center;
+}

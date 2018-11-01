@@ -132,11 +132,9 @@ $(function() {
         for(var i = 0; i < 30; i++){
 
             var name = "<div class='name'>" + (data[i].Name) + " </div>";
-            var image = name + '<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'">'
+            var image ='<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'">' + name
             image = '<div class="col-md-2">' + image + "</div>";
             $('#images').append(image);    
-
-        
         }
 
  
@@ -219,9 +217,6 @@ $(function() {
                         var nbaLat = 37.750163666;
                         var nbaLong = -122.201832526;
                     }
-                    //  else if ("team city = data attribute") {
-                    //     // nba lat & nbalong
-                    // } else if()
 
                     console.log("Lat: " + nbaLat, "Long: " + nbaLong);
             
@@ -236,7 +231,7 @@ $(function() {
                         var center = new google.maps.LatLng(nbaLat, nbaLong);
                         map = new google.maps.Map(document.getElementById('map'), {
                             center: center,
-                            zoom: 15
+                            zoom: 13
                         });
 
                         var request = {
