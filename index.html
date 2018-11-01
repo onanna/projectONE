@@ -41,38 +41,54 @@
         <br>    
     </div>
 
-<!--places API-->
-    <!-- <input id="pac-input" class="controls" type="text"
-        placeholder="Enter a location"> -->
-        <div class= "mapLoc">
-    <div id="map"></div>
-        </div> <!--Map loc complete-->
-    <div id="infowindow-content">
-      <span id="place-name"  class="title"></span><br>
-      Place ID <span id="place-id"></span><br>
-      <span id="place-address"></span>
-    </div>
 
-    <!--Divs to append team data-->
-   <div class="col-md-6">
 
-        <div>
-            <span id="teamName"></span>
+<!-- <div id= "everything"> Put everything in this bih -->
+    <!--places API-->
+        <input id="pac-input" class="controls" type="text"
+            placeholder="Enter a location">
+            <div class= "mapLoc">
+        <div id="map"></div>
+            </div> <!--Map loc complete-->
+        <div id="infowindow-content">
+        <span id="place-name"  class="title"></span><br>
+        Place ID <span id="place-id"></span><br>
+        <span id="place-address"></span>
         </div>
+
+        <!--Divs to append team data-->
+    <div class="col-md-6" id="showInfo">
+        <div>
+            <!-- Team: -->
+            <span id="teamName" >
+            </span>
+        </div>
+
         <div >
-            <span id="teamConf"></span>
+            <!-- Conference: -->
+            <span id="teamConf">
+
+            </span>
         </div>
-        <div>
-            <span id="teamStandings"></span>
+
+        <div> <!--Standings:-->
+            <span id="teamStandings" >
+
+            </span>
+
         </div>
 
-         <div>
-            <div class="scrollBoxRoster">
+        <div> 
+            <!-- Roster: -->
+                <div class="scrollBoxRoster">
 
-            </div> <!--Roster scroll end-->
+                </div> <!--Roster scroll end-->
 
+        </div>
     </div>
-</div>
+
+<!-- </div> Everything closed in this bih -->
+
 
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA&libraries=places&callback=initMap"
         async defer></script>
@@ -80,5 +96,3 @@
 <script src="./assets/javascript/main.js"></script>
 </body>
 </html>
-
-
