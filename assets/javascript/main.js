@@ -156,7 +156,7 @@ $(function() {
             })
             
             var teamCity = $(this).data('city');
-            console.log(teamCity);git
+            console.log(teamCity);
 
             //STADIUM AJX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////
