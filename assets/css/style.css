@@ -37,7 +37,7 @@ img {
 
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
-        #map {
+        /* #map {
             position: relative;
             float: right;
             overflow: hidden;
@@ -46,7 +46,7 @@ img {
           width: 40%;
           border: black solid 3px;
          
-        }
+        } */
         /* Optional: Makes the sample page fill the window. */
         html, body {
           height: 100%;
