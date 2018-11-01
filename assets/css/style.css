@@ -1,5 +1,11 @@
 body {
     text-align: center;
+  
+}
+
+.jumbotron{
+    background-image: URL("../images/jordan-tongue.jpg");
+    color: white;
 }
 
 .image {
@@ -31,6 +37,7 @@ img {
 
         /* Always set the map height explicitly to define the size of the div
          * element that contains the map. */
+<<<<<<< HEAD
         #map {
             
           position: relative;
@@ -39,6 +46,18 @@ img {
           height: 40%;
           width: 40%
         }
+=======
+        /* #map {
+            position: relative;
+            float: right;
+            overflow: hidden;
+            margin-top:20px;
+          height: 40%;
+          width: 40%;
+          border: black solid 3px;
+         
+        } */
+>>>>>>> cf73bc836b1c11c669640061ab7a804f0b9b1eb2
         /* Optional: Makes the sample page fill the window. */
         html, body {
           height: 100%;
@@ -74,7 +93,10 @@ img {
             display: inline;
           }
 
-
+.mapLoc{
+   height: 100%;
+   width: 100%;
+}
 
         .map-location {
             height: 100%;
@@ -89,7 +111,9 @@ img {
 #tickBox{
     padding: 10px;
     margin:5px;
+    background-color: #fff;
 }
+<<<<<<< HEAD
 /* 
 .teams{
     text-align: center;
@@ -105,3 +129,18 @@ img {
 }
 =======
 } */ 
+=======
+
+#todaysScores {
+    margin: 10px;
+    padding: 10px;
+}
+
+.mapLoc {
+    margin-top: 100px;
+}
+
+.name {
+    text-align: center;
+}
+>>>>>>> cf73bc836b1c11c669640061ab7a804f0b9b1eb2

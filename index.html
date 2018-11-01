@@ -21,87 +21,77 @@
 </head>
 <body>
 
-<div id="todayScores">Today's NBA Games
-        <br>
+<div id="todayScores"></div>
+        
        
         <div class="jumbotron jumbotron-fluid">
                 <div class="container">
+                    <br>
+                    <br>
                   <h1 class="display-4">The Buzzer</h1>
                   <p class="lead">Your local sports and food :)</p>
                 </div>
               </div>
 
-
-        <nav class="navbar navbar-light bg-light">
-                <form class="form-inline">
-                  <input class="form-control mr-sm-8" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-              </nav>
-
-
-</div>
-<br>
-<br>
-<br>
 <div class=teamInfo class="col-md-12"></div>
     
     <div class="teamContainer">
-        <br>
-        <br>
-        <br>
+        
 
-        <!-- <div class="col-md-2"></div> -->
-        <div id="images" class="col-md-12"></div>
-        <!-- <div class="col-md-2"></div> -->
+        <div class="col-md-1"></div>
+        <div id="images" class="col-md-10"></div>
+        <div class="col-md-1"></div>
             
-        <br>
-        <br>
-        <br>
+        <br>    
     </div>
 
 
 
-<!--places API-->
-
+<!-- <div id= "everything"> Put everything in this bih -->
+    <!--places API-->
         <input id="pac-input" class="controls" type="text"
-                placeholder="Enter a location">
-           <div class= " map-location"> 
-               <div id="map" class = "col-md-6"></div>
-           </div> 
-           <div id="infowindow-content">
-            <span id="place-name"  class="title"></span><br>
-            Place ID <span id="place-id"></span><br>
-            <span id="place-address"></span>
-            </div>
+            placeholder="Enter a location">
+            <div class= "mapLoc">
+        <div id="map"></div>
+            </div> <!--Map loc complete-->
+        <div id="infowindow-content">
+        <span id="place-name"  class="title"></span><br>
+        Place ID <span id="place-id"></span><br>
+        <span id="place-address"></span>
+        </div>
 
-    <div class = "container  col-sm-6">
+        <!--Divs to append team data-->
+    <div class="col-md-6" id="showInfo">
+        <div>
+            <!-- Team: -->
+            <span id="teamName" >
+            </span>
+        </div>
 
-         <div> Team:
-                <span id= "key"></span>
+        <div >
+            <!-- Conference: -->
+            <span id="teamConf">
 
-            </div>
-            <div> Conference: <br>
-                <span id="conference">
+            </span>
+        </div>
 
-                </span>
-            </div>
-            <div>Division:<br>
-                <span id= "division">
+        <div> <!--Standings:-->
+            <span id="teamStandings" >
 
-                </span>
-            </div>
-            <div> Latest Scores:<br>
-                <span id= "scores">
+            </span>
 
-                </span>
+        </div>
 
-            </div>
-            <div>
+        <div> 
+            <!-- Roster: -->
+                <div class="scrollBoxRoster">
 
-            </div>
+                </div> <!--Roster scroll end-->
 
+        </div>
     </div>
+
+<!-- </div> Everything closed in this bih -->
 
 
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA&libraries=places&callback=initMap"
@@ -110,6 +100,3 @@
 <script src="./assets/javascript/main.js"></script>
 </body>
 </html>
-
-
-
