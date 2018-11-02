@@ -18,7 +18,7 @@
 <div id="todayScores"></div>
         
        
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid cardbod">
                 <div class="container">
                     <br>
                     <br>
@@ -27,67 +27,40 @@
                 </div>
               </div>
 
-<div class=teamInfo class="col-md-12"></div>
+              <div class= "container-fluid" id="bodybox">
+                    <div class= "row">
+                     <div class= "col-sm-8 offset-sm-2">
+                        <div class="card">
+                            <div class="card-body">
+                
+                                          <div id="me-text"><b>About The BuZZer</b></div>
+                
+                                          <div class= "position-relative textc">
+                
+                                                  <img class= "float-left img" src= "IMG_8925.png" height= "250px" width= "160px"> 
+                                              <div class= "BodyFont">
+                                                  
+                                                <p> 
+                                                </p>
+                
+                                                  <p>
+                                                </p>
+                                  
     
-    <div class="teamContainer">
-        
+                
+                                    </div> <!--BODYFONT DIV-->
+                                </div>
+                              </div> <!--CARD BODY DIV-->
+                            </div>  <!--CARD DIV-->
+                        </div> <!--MAIN BODY COLUMN DIV-->
+                    </div> <!--ROW DIV-->
+                        <div class=col-sm-2></div>
+                </div> <!--container DIV-->
+                
+    
 
-        <div class="col-md-1"></div>
-        <div id="images" class="col-md-10"></div>
-        <div class="col-md-1"></div>
-            
-        <br>    
-    </div>
-
-
- <!--Divs to append team data-->
- <div class="col-md-6" id="showInfo">
-        <div>
-            <!-- Team: -->
-            <span id="teamName" >
-            </span>
-        </div>
-
-        <div >
-            <!-- Conference: -->
-            <span id="teamConf">
-
-            </span>
-        </div>
-
-        <div> <!--Standings:-->
-            <span id="teamStandings" >
-
-            </span>
-
-        </div>
-
-        <div> 
-            <!-- Roster: -->
-                <div class="scrollBoxRoster">
-
-                </div> <!--Roster scroll end-->
-
-        </div>
-    </div>
-
-
-    <!--places API-->
-        <input id="pac-input" class="controls" type="text"
-            placeholder="Enter a location">
-            <div class= "mapLoc">
-        <div id="map"></div>
-            </div> <!--Map loc complete-->
-        <div id="infowindow-content">
-        <span id="place-name"  class="title"></span><br>
-        Place ID <span id="place-id"></span><br>
-        <span id="place-address"></span>
-        </div>
 
        
-        
-
-
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7TE4cFhhyLquzYnqgpAKY9USJcOf4ErA&libraries=places&callback=initMap"
         async defer></script>
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

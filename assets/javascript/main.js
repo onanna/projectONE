@@ -146,21 +146,30 @@ $(function() {
             
             $('#teamName').html("Team:" + " " + $(this).data('team'))
             $('#teamConf').html("Conference:" + " " + $(this).data('conf'))
-            $('#teamStandings').html("Stand:" + " " + $(this).data('Key'))
+            $('#teamStandings').html("Standings:" + " " + $(this).data('Key'))
             // console.log("key!!!!:" + $(this).data('Key'))
 
             $("#map").css({ //adds the map onto the page from the on click
                 // "position": "relative;",
                 "float": "right",
                 "overflow": "hidden",
-                "margin-top":"20px",
+                "margin-top":"-100px",
                 "height": "40%",
                 "width": "40%",
-                "border": "black solid 3px",
-                "margin-right": "90px"
-
-        
+                "border": "rgb(172, 22, 22) solid 3px",
+                "margin-right": "200px",
+                "margin-bottom": "50px",
+                
+                
+            
             })
+
+            $(".footBar").css({ //adds margin top on the onclick
+    
+                    "margin-top":"250px"
+
+                  
+                })
             
             var teamCity = $(this).data('city');
             
@@ -370,5 +379,6 @@ $(function() {
         console.log("error");
     });
 });
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
