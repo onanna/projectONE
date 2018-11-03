@@ -145,6 +145,7 @@ img:hover {
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     font-weight: bold;
     margin-left:85px;
+    -webkit-animation-delay: 3s;
 }
 
 #tickBox{
@@ -186,6 +187,42 @@ color: rgb(138, 230, 1);
     border-top: 3px rgb(172, 22, 22) solid;
 }
 
-.cardBod{
+/* .cardBod{
     background-color: white;
+} */
+
+.cardBod {
+    padding: 100px;
+    background: rgb(218, 217, 217);
+    margin-left:50%;
+    border: 3px rgb(172, 22, 22) solid;
+    margin-bottom: 30px;
+    opacity: 10;
+    
+
+}
+
+#me-text {
+    margin-top: -80px;
+    font-weight: bolder;
+    font: 30px white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+.para {
+    margin-top: 15px;
+    font-weight: bold;
+    
+}
+
+.contactBod {
+    padding: 100px;
+    background: rgb(218, 217, 217);
+    /* margin-left:50%; */
+    border: 3px rgb(172, 22, 22) solid;
+    margin-bottom: 30px;
+    opacity: 10;
+    
+
 }
