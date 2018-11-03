@@ -32,6 +32,11 @@ img {
     width: 500px;
 }
 
+#todaysScores {
+    text-align: center;
+    float: right;
+}
+
 
 /* CSS FOR THE PLACES MAPS */
 
@@ -97,6 +102,7 @@ img {
     padding: 10px;
     margin:5px;
     background-color: #fff;
+    text-align: center;
 }
 
 #todaysScores {
