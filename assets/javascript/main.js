@@ -128,7 +128,7 @@ $(function() {
                 // "position": "relative;",
                 "float": "right",
                 "overflow": "hidden",
-                "margin-top":"-100px",
+                "margin-top":"-330px",
                 "height": "40%",
                 "width": "40%",
                 "border": "rgb(172, 22, 22) solid 3px",
