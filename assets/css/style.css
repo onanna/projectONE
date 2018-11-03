@@ -42,6 +42,11 @@ img:hover {
     width: 500px;
 }
 
+#todaysScores {
+    text-align: center;
+    float: right;
+}
+
 
 /* CSS FOR THE PLACES MAPS */
 
@@ -109,6 +114,7 @@ img:hover {
     padding: 10px;
     margin:5px;
     background-color: #fff;
+    text-align: center;
 }
 
 #todaysScores {
