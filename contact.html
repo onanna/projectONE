@@ -12,9 +12,6 @@
 <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 
 <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-<!--ANUMATE??-->
-<link rel="stylesheet" href="animate.min.css">
-
 </head>
 <body>
 
@@ -26,86 +23,51 @@
                     <br>
                     <br>
                   <h1 class="display-4">The Buzzer</h1> <span class="dot"></span>
-                  <p class="lead animated shake">Your Local Sports & Food </p>
+                  <p class="lead">Your Local Sports & Food </p>
                 </div>
               </div>
 
 <div class=teamInfo class="col-md-12"></div>
     
-    <div class="teamContainer">
+
+
+
+    <div class= "container-fluid" id="contactBox">
+            <div class= "row">
+             <div class=col-lg-2></div>
+             <div class= col-lg-8>
+                <div class="card">
+                    <div class="card-body contactBod">
         
-
-        <div class="col-md-1"></div>
-        <div id="images" class="col-md-10"></div>
-        <div class="col-md-1"></div>
-            
-        <br>    
-    </div>
-
-
- <!--Divs to append team data-->
- <div class="col-md-6" id="showInfo">
-        <div>
-            <!-- Team: -->
-            <span id="teamName" >
-            </span>
-        </div>
-
-        <div >
-            <!-- Conference: -->
-            <span id="teamConf">
-
-            </span>
-        </div>
-
-        <div> <!--Standings:-->
-            <span id="teamWins" ></span>
-            <span id="teamLosses" ></span>
-        </div>
-
-        <div>
-            <span id="divisionWins"></span>
-        </div>
-
-        <div>
-            <span id="divisionLosses"></span>
-        </div>
-
-        <div>
-            <span id="streak"></span>
-        </div>
-
-        <div>
-            <span id="gamesBack"></span>
-        </div>
-
-        <div>
-            <span id="percentage"></span>
-        </div>
-
+                        <div id="me-text">Contact</div>
         
-
-        <div> 
-            <!-- Roster: -->
-                <div class="scrollBoxRoster">
-
-                </div> <!--Roster scroll end-->
-
-        </div>
-    </div>
-
-
-    <!--places API-->
-        <input id="pac-input" class="controls" type="text"
-            placeholder="Enter a location">
-            <div class= "mapLoc">
-        <div id="map"></div>
-            </div> <!--Map loc complete-->
-        <div id="infowindow-content">
-        <span id="place-name"  class="title"></span><br>
-        Place ID <span id="place-id"></span><br>
-        <span id="place-address"></span>
-        </div>
+                        <div class= "position-relative textc">
+        
+                                <form>
+                                        <div class="form-group">
+                                          <label for="Name">Name</label>
+                                          <input type="text" class="form-control" id="Name" placeholder="Your Name">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="Email">Email Address</label>
+                                          <input type="text" class="form-control" id="Email" placeholder="yourEmail.email.com">
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="Message">Message</label>
+                                          <textarea type="text" class="form-control" id="Message" rows="7" placeholder="Message"></textarea>
+                                        </div>
+        
+                                        <input type="submit">
+                                      </form>
+                          
+                        </div><!--POS RELATIVE MSY NOT NEED-->
+                            
+                        </div> <!--CARD BODY DIV-->
+                    </div>  <!--CARD DIV-->
+                </div> <!--MAIN BODY COLUMN DIV-->
+            </div> <!--ROW DIV-->
+                <div class=col-lg-2></div>
+        </div> <!--container DIV-->
 
        
         
@@ -134,7 +96,7 @@
                 <div class= "col-sm-1 ContactCol">
                     <div class="navLink"><a href="contact.html">Contact</a></div>
                 </div>
-
+                
     </div> <!--ROW END-->
 </div>
 

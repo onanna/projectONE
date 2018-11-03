@@ -48,48 +48,19 @@ $.ajax({
     console.log(data[0].PointSpread)
 
     for(var i = 0; i < 30; i++) {
-    var winner = "<div class='winner'>" + (data[i].AwayTeam) + " = " + ((data[i].AwayTeamScore)) + "</div>";
-    var ticker = "<div class='col-md-1' id='tickBox'>" + winner + (data[i].HomeTeam) + " = " + ((data[i].HomeTeamScore)) + "</div>";
+    var winner = "<div class='winner'>" + (data[i].AwayTeam) + " = " + (data[i].AwayTeamScore) + "</div>";
+    var ticker = "<div class='col-md-1' id='tickBox'>" + winner + (data[i].HomeTeam) + " = " + (data[i].HomeTeamScore) + "</div>";
     // var scorer = ticker + '<div class="board" "  data-team="'+ data[i].Name +'">'
     // scorer = '<div class="col-md-4">' + scorer + "</div>";
     $('#todayScores').append(ticker);
     }
 
-})
-.fail(function() {
-    console.log("error");
-});
-});
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-
-/////************************************************/////////////////////////////////////////
-
-
-//AJAX CALL FOR STANDINGS AND DIVISON/RECORD INFORMATION//////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-$(function() {
-var params = {
-    // Request parameters
-};
-
-$.ajax({
-    url: "https://api.fantasydata.net/v3/nba/scores/JSON/Standings/2019?" + $.param(params),
-    beforeSend: function(xhrObj){
-        // Request headers
-        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
-    },
-    type: "GET",
-    // Request body
-    data: "{body}",
-})
-.done(function(data) {
-    console.log("STANDINGS success");
-    console.log(data);
+    if ((data[i].AwayTeamScore) = null) {
+        data[i].AwayTeamScore.remove();
+    }
     
-})
 
+})
 .fail(function() {
     console.log("error");
 });
@@ -99,10 +70,15 @@ $.ajax({
 
 
 /////************************************************/////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 //API PULL FOR ALL NBA TEAMS AND INFO
 //////////////////////////////////////////////////////////////////////////////////////////////
+
 $(function() {
 
     var params = {
@@ -130,42 +106,120 @@ $(function() {
         for(var i = 0; i < 30; i++){
 
             var name = "<div class='name'>" + (data[i].Name) + " </div>";
-            var image ='<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'">' + name
+            var image ='<img class="logos" id="'+ data[i].Name + '"src=' + (data[i].WikipediaLogoUrl) + '  data-team="'+ data[i].Name +'" data-conf="'+ data[i].Conference +'" data-wins="'+ data[i].Wins +'" data-city="'+ data[i].City +'" data-key="'+ data[i].Key +'">' + name
             image = '<div class="col-md-2">' + image + "</div>";
             $('#images').append(image);    
         }
+
 
     
         //ON CLICK FUNCTION////////////////////////////////////$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         $(document).on('click', '.logos' ,function(){
         
             // console.log($(this).data('team'))
-            // console.log($(this).data('conf'))
+            
             
             $('#teamName').html("Team:" + " " + $(this).data('team'))
             $('#teamConf').html("Conference:" + " " + $(this).data('conf'))
+            
+
 
             $("#map").css({ //adds the map onto the page from the on click
-                "position": "relative;",
+                // "position": "relative;",
                 "float": "right",
                 "overflow": "hidden",
-                "margin-top":"20px",
+                "margin-top":"-330px",
                 "height": "40%",
                 "width": "40%",
-                "border": "black solid 3px"
+                "border": "rgb(172, 22, 22) solid 3px",
+                "margin-right": "200px",
+                "margin-bottom": "50px",
+                
+                
+            
             })
+
+            $(".footBar").css({ //adds margin top on the onclick
+    
+                    "margin-top":"250px"
+
+                  
+                })
             
             var teamCity = $(this).data('city');
+            
             console.log(teamCity);
 
-            //STADIUM AJX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
+            var teamKey = $(this).data('key');
+            console.log("Key Merge between Ajax works" + teamKey)
+
+            //AJAX CALL FOR STANDINGS AND DIVISON/RECORD INFORMATION//////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////
             $(function() {
-
                 var params = {
                     // Request parameters
                 };
+            
+                $.ajax({
+                    url: "https://api.fantasydata.net/v3/nba/scores/JSON/Standings/2019?" + $.param(params),
+                    beforeSend: function(xhrObj){
+                        // Request headers
+                        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKeyOfe);
+                    },
+                    type: "GET",
+                    // Request body
+                    data: "{body}",
+                })
+
+                .done(function(data) {
+                    console.log("STANDINGS success");
+                    console.log(data);
+
+
+                    for(let i = 0; i < 30; i++) {
+                        if(teamKey === data[i].Key) {
+                            var teamWins = data[i].Wins;
+                            var teamLosses = data[i].Losses;
+                            var divisionWins = data[i].DivisionWins;
+                            var divisonLosses = data[i].DivisionLosses;
+                            var Streak = data[i].Streak;
+                            var gamesBack = data[i].GamesBack;
+                            var Percentage = data[i].Percentage;
+                        }
+                    }
+
+                    console.log("peyton: " + teamWins)
+                    console.log("eli: " + teamLosses)
+
+                    $('#teamWins').html("Wins: "  + teamWins)
+                    $('#teamLosses').html("Losses: " + teamLosses)
+
+                    $('#divisionWins').html("Division Wins: " + divisionWins)
+                    $('#divisionLosses').html("Division Losses: " + divisonLosses)
+                    $('#streak').html("Win Streak: " + Streak)
+                    $('#gamesBack').html("Games Back: " + gamesBack)
+                    $('#percentage').html("Win Percentage: " + (Percentage * 100) + "%")
+                    
+                    
+                    
+                })
                 
+                .fail(function() {
+                    console.log("error");
+                });
+            });
+            ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+            //STADIUM AJX CALL for LONGITUDE AND LATITUDE/////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            $(function() {
+                
+                var params = {
+                    // Request parameters
+                };
+           
                 $.ajax({
                     url: "https://api.fantasydata.net/v3/nba/scores/JSON/Stadiums?" + $.param(params),
                     beforeSend: function(xhrObj){
@@ -180,7 +234,7 @@ $(function() {
                 .done(function(data) {
 
                     // console.log("TEAM STADIUM success");
-                    console.log(data);
+                    // console.log(data);
                     console.log(teamCity);
 
                     for(let i = 0; i < 29; i++) {
@@ -310,5 +364,10 @@ $(function() {
         console.log("error");
     });
 });
+
+
+
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
